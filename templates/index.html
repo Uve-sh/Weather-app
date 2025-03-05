@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App 🔥</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>🔥 Weather App 🔥</h1>
+    <form action="/" method="get" onsubmit="changePlaceholder()">
+        <input type="text" name="city" placeholder="Enter A Country/City" id="search">
+        <button type="submit">GET WEATHER</button>
+    </form>
+
+    {% if data %}
+    <div class="weather-info">
+        <h2>{{ data['name'] }} Weather</h2>
+        <p>Temperature: {{ data['main']['temp'] }}°C</p>
+        <p>Weather: {{ data['weather'][0]['description'] }}</p>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+    function changePlaceholder() {
+        let input = document.getElementById("search");
+        input.placeholder = "Search again";
+    }
+</script>
+</body>
+</html>
